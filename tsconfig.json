@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./src",
+		"target": "ESNext",
+		"module": "Node16",
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"strict": true,
+		"moduleResolution": "Node16",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"noUncheckedIndexedAccess": true,
+		"typeRoots": ["src/@types", "node_modules/@types"],
+		"resolveJsonModule": true,
+		"paths": {
+			"@bot/*": ["./*"]
+		}
+	},
+	"ts-node": {
+		"require": ["tsconfig-paths/register"]
+	},
+	"include": ["src/**/*", "src/**/*.json", "src/index.ts"],
+	"exclude": ["node_modules"]
+}
