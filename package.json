@@ -2,6 +2,9 @@
 	"name": "autobot-discord",
 	"version": "1.0.0",
 	"description": "",
+	"engines": {
+		"node": ">=20"
+	},
 	"scripts": {
 		"start": "node -r ./tsconfig-paths-bootstrap.js dist/index.js",
 		"dev": "nodemon src/index.ts",

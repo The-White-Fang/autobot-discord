@@ -1,29 +1,25 @@
 import globals from 'globals';
-import eslint from '@eslint/js';
+import js from '@eslint/js';
 import prettierPlugin from 'eslint-plugin-prettier';
 import configPrettier from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
-export default [
+export default tseslint.config(
+	{ ignores: ['dist/**', 'node_modules/**', 'src/**/*.d.ts'] },
+	js.configs.recommended,
+	...tseslint.configs.recommended,
 	{
 		files: ['src/**/*.ts'],
-		plugins: {
-			prettier: prettierPlugin,
-			'@typescript-eslint': tseslint.plugin,
-		},
 		languageOptions: {
-			parser: tseslint.parser,
-			globals: { ...globals.node, ...globals.es5, ...globals.es2021 },
+			globals: { ...globals.node, ...globals.es2021 },
 		},
+		plugins: { prettier: prettierPlugin },
 		rules: {
-			...eslint.configs.recommended.rules,
-			...tseslint.configs.recommended.rules,
 			...configPrettier.rules,
 			'prettier/prettier': 'warn',
 			'no-unused-vars': 'off',
 			'@typescript-eslint/no-unused-vars': ['error'],
 		},
-		ignores: ['dist/**', 'node_modules/**', 'src/**/*d.ts'],
 	},
-];
+);

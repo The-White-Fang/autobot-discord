@@ -7,15 +7,15 @@ export type Action = (interaction: Interaction<CacheType>) => Promise<void> | vo
 const actions: Record<Command, Action> = {
 	async help(interaction) {
 		assert(interaction.isRepliable(), 'Interaction is not repliable');
-		interaction.reply('Available commands: help, ping, info');
+		await interaction.reply('Available commands: help, ping, info');
 	},
 	async ping(interaction) {
 		assert(interaction.isRepliable(), 'Interaction is not repliable');
-		interaction.reply('Pong!');
+		await interaction.reply('Pong!');
 	},
 	async info(interaction) {
 		assert(interaction.isRepliable(), 'Interaction is not repliable');
-		interaction.reply('This is a Discord bot built with discord.js');
+		await interaction.reply('This is a Discord bot built with discord.js');
 	},
 };
 

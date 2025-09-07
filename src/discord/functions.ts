@@ -1,15 +1,14 @@
 import { Client, REST, Routes } from 'discord.js';
 import actions from './actions';
 
-export type DiscordComnad = { name: string; description: string };
+export type DiscordCommand = { name: string; description: string };
 
-export function register_commands(rest_client: REST, client_id: string, commands: DiscordComnad[]) {
+export function register_commands(rest_client: REST, client_id: string, commands: DiscordCommand[]) {
 	return rest_client.put(Routes.applicationCommands(client_id), {
 		body: commands,
 	});
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function register_intents(client: Client, token: string) {
 	client.on('ready', function () {
 		console.log(`Discord bot logged in as ${client.user?.tag}`);
@@ -31,4 +30,6 @@ export async function register_intents(client: Client, token: string) {
 			console.warn('Error handling interaction:', error);
 		}
 	});
+
+	await client.login(token);
 }

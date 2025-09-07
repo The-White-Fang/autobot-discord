@@ -1,7 +1,7 @@
 export default function verify_env() {
-	const app_id = process.env.DISCORD_APP_ID as string,
-		token = process.env.DISCORD_APP_TOKEN as string,
-		public_key = process.env.DISCORD_APP_PUBLIC_KEY as string;
+	const app_id = process.env.DISCORD_APP_ID,
+		token = process.env.DISCORD_APP_TOKEN,
+		public_key = process.env.DISCORD_APP_PUBLIC_KEY;
 
 	if (!validate_env_var(app_id)) {
 		console.error('Missing or invalid DISCORD_APP_ID in environment variables.');
@@ -25,12 +25,12 @@ export default function verify_env() {
 	};
 }
 
-function validate_env_var(name: (typeof process.env)[string]) {
-	if (!name) {
+function validate_env_var(value: (typeof process.env)[string]): value is string {
+	if (!value) {
 		return false;
 	}
 
-	if (!name.length) {
+	if (!value.length) {
 		return false;
 	}
 

@@ -1,15 +1,21 @@
 name: quality-checks
 on: [push, pull_request]
+permissions: read-all
+concurrency:
+    group: quality-checks-${{ github.ref }}
+    cancel-in-progress: true
 jobs:
     prettier:
         name: PrettifyCheck
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v4
               with:
-                  node-version: '20'
-            - run: npm install
+                  node-version-file: '.nvmrc'
+                  cache: 'npm'
+                  cache-dependency-path: package-lock.json
+            - run: npm ci --no-audit --no-fund
             - run: npm run pretty -- --check .
 
     eslint:
@@ -18,8 +24,10 @@ jobs:
         needs: prettier
         steps:
             - uses: actions/checkout@v4
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v4
               with:
-                  node-version: '20'
-            - run: npm install
-            - run: npm run lint .
+                  node-version-file: '.nvmrc'
+                  cache: 'npm'
+                  cache-dependency-path: package-lock.json
+            - run: npm ci --no-audit --no-fund
+            - run: npm run lint
