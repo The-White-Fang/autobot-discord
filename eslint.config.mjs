@@ -7,8 +7,8 @@ import tseslint from 'typescript-eslint';
 /** @type {import('eslint').Linter.Config[]} */
 export default tseslint.config(
 	{ ignores: ['dist/**', 'node_modules/**', 'src/**/*.d.ts'] },
-	js.configs.recommended,
-	...tseslint.configs.recommended,
+	{ files: ['src/**/*.ts'], ...js.configs.recommended },
+	...tseslint.configs.recommended.map((config) => ({ files: ['src/**/*.ts'], ...config })),
 	{
 		files: ['src/**/*.ts'],
 		languageOptions: {

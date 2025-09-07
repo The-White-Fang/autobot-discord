@@ -2,7 +2,7 @@ import Express from 'express';
 import dotenv from 'dotenv';
 import { Client, GatewayIntentBits, REST } from 'discord.js';
 import verify_env from '@bot/utils/verify_env';
-import { DiscordCommand, register_commands, register_intents } from '@bot/discord/functions';
+import { register_commands, register_intents } from '@bot/discord/functions';
 import discord_commands from '@bot/discord/commands';
 
 dotenv.config();
@@ -23,7 +23,7 @@ async function post_start() {
 	console.log(`Server started on port ${PORT}`);
 
 	try {
-		await register_commands(discord_rest_client, app_id, discord_commands as any as DiscordCommand[]);
+		await register_commands(discord_rest_client, app_id, discord_commands);
 		await register_intents(discord_client, token);
 	} catch (error) {
 		console.error(error);

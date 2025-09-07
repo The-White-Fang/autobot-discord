@@ -3,7 +3,7 @@ import actions from './actions';
 
 export type DiscordCommand = { name: string; description: string };
 
-export function register_commands(rest_client: REST, client_id: string, commands: DiscordCommand[]) {
+export function register_commands(rest_client: REST, client_id: string, commands: readonly DiscordCommand[]) {
 	return rest_client.put(Routes.applicationCommands(client_id), {
 		body: commands,
 	});
