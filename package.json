@@ -1,37 +1,42 @@
 {
-  "name": "autobot-discord",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "start": "node -r ./tsconfig-paths-bootstrap.js dist/index.js",
-    "dev": "nodemon src/index.ts",
-    "build": "rm -rf dist/ && tsc -p .",
-    "pretty": "prettier --write src/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/The-White-Fang/autobot-discord.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/The-White-Fang/autobot-discord/issues"
-  },
-  "homepage": "https://github.com/The-White-Fang/autobot-discord#readme",
-  "dependencies": {
-    "discord.js": "^14.22.1",
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0",
-    "zod": "^4.1.5"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.3.0",
-    "nodemon": "^3.1.10",
-    "prettier": "^3.6.2",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.9.2"
-  }
+	"name": "autobot-discord",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"start": "node -r ./tsconfig-paths-bootstrap.js dist/index.js",
+		"dev": "nodemon src/index.ts",
+		"build": "rm -rf dist/ && tsc -p .",
+		"pretty": "prettier --write src/",
+		"lint": "npx eslint"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/The-White-Fang/autobot-discord.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/The-White-Fang/autobot-discord/issues"
+	},
+	"homepage": "https://github.com/The-White-Fang/autobot-discord#readme",
+	"dependencies": {
+		"discord.js": "^14.22.1",
+		"dotenv": "^17.2.1",
+		"express": "^5.1.0",
+		"zod": "^4.1.5"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.35.0",
+		"@types/express": "^5.0.3",
+		"@types/node": "^24.3.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-prettier": "^5.5.4",
+		"nodemon": "^3.1.10",
+		"prettier": "^3.6.2",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
+		"typescript": "^5.9.2",
+		"typescript-eslint": "^8.42.0"
+	}
 }
