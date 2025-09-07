@@ -10,7 +10,7 @@ export default [
 		files: ['src/**/*.ts'],
 		plugins: {
 			prettier: prettierPlugin,
-            '@typescript-eslint': tseslint.plugin,
+			'@typescript-eslint': tseslint.plugin,
 		},
 		languageOptions: {
 			parser: tseslint.parser,
